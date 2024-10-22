@@ -19,3 +19,5 @@ print(sample_df$review)
 # Converting into lowercase
 df$review <- tolower(df$review)
 
+# Removing Html syntax
+df$review <- str_remove_all(df$review, "<[^>]+>")
