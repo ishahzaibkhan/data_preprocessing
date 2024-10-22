@@ -38,3 +38,10 @@ sample_df <- df %>%
 # Performing the operations on smaller scale
 sample_df$review <- clean_text(sample_df$review)
 
+# Performing the operation on entire data
+clean_data <- clean_text(df$review)
+df$review <- clean_data
+
+write.table(df, file = "./cleaned_data.txt", sep = ",", row.names = FALSE, col.names = TRUE, quote = FALSE)
+write.csv(df, file = "./cleaned_data.csv", row.names = FALSE)
+
