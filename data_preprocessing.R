@@ -1,5 +1,6 @@
 library(tidyverse)
 library(skimr)
+library(tm)
 
 df <- read.csv("./IMDB Dataset.csv")
 
@@ -16,8 +17,16 @@ print(sample_df$review)
 # Html tags/symbols
 # Punctuation
 
+
 # Converting into lowercase
 df$review <- tolower(df$review)
 
 # Removing Html syntax
 df$review <- str_remove_all(df$review, "<[^>]+>")
+
+# Removing stopwords
+df$review <- sapply(df$review, function(text) {
+  removeWords(text, stopwords("en"))
+})
+
+
